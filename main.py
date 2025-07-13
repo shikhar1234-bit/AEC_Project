@@ -35,12 +35,19 @@
 from agents.ParagraphExtractor.main import ParagraphExtractorAgent
 from agents.PreProcessor.main import PreprocessorAgent
 from agents.Classifier.main import ClassifierAgent
+from agents.Stats.main import StatsAgent
+
+
 
 if __name__ == "__main__":
     agent = ParagraphExtractorAgent()
     paragraphs = agent.run("/Users/shikhar_new/Desktop/AEC_Project/trial_paper.pdf")
     cleaned_paragraphs=PreprocessorAgent().run(paragraphs)
     classified_paragraphs=ClassifierAgent().run(cleaned_paragraphs)
+    stats = StatsAgent().run(classified_paragraphs)
+    print(stats)
 
-    for i, p in enumerate(classified_paragraphs[:100]):
-        print(f"\n--- Paragraph {i+1} ---\n{p}")
+    
+
+    # for i, p in enumerate(classified_paragraphs):
+    #     print(f"\n--- Paragraph {i+1} ---\n{p}")
